@@ -1,9 +1,10 @@
 ## **Inter && Union**
 ![](https://i.imgur.com/xyNtrbQ.png)
 
-La difference entre c'est deux fonction c'est que 
+La difference entre c'est deux fonction c'est que :
 - **Union** *ecrit tous les caracteres rencontrer* 
 - **Inter** *ecrit que ceux en commun* 
+
 Il ecrivent tous les deux des caracteres unique !
 
 ~~~C
