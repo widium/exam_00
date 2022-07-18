@@ -106,12 +106,11 @@ char *get_next_line(int fd)
     {
         if (*cursor == '\n')
             break;
-        *cursor++;
+        (*cursor)++;
     }
     if (cursor > start)
     {
         *cursor = 0;
-        free(start);
         return (start);
     }
     free(start);
