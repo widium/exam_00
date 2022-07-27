@@ -85,10 +85,65 @@ int detect_type(va_list arg, const char *str, int index)
     else if (str[index] == 'd')
         ft_putnbr(va_arg(arg, int), &count);
     else if (str[index] == 'x')
-        ft_puthexa(va_arg(arg, unsigned long), &count);
+        ft_puthexa(va_arg(arg, unsigned int), &count);
     return (count);
 }
 
+void ft_putchar(char c, int *count)
+{
+    write(1, &c, 1);
+    *count += 1;
+}
+
+void ft_putstr(char *str, int *count)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+    {
+        write(1, "(null)", 6);
+        return;
+    }
+    while (str[i])
+    {
+        ft_putchar(str[i], count);
+        i++;
+    }
+}
+
+void ft_putnbr(int number, int *count)
+{
+    unsigned int nbr;
+
+    if (number < 0)
+    {
+        ft_putchar('-', count);
+        nbr = (unsigned int)number * -1;
+    }
+    else
+        nbr = (unsigned int)number;
+    if (nbr >= 10)
+    {
+        ft_putnbr(nbr / 10, count);
+        ft_putnbr(nbr % 10, count);
+    }
+    else 
+        ft_putchar(nbr + '0', count);
+}
+
+void ft_puthexa(unsigned int nbr, int *count)
+{
+    char *alphabet = "0123456789abcdef";
+
+    if (nbr >= 16)
+    {
+        ft_puthexa(nbr / 16, count);
+        ft_puthexa(nbr % 16, count);
+    }
+    else 
+        ft_putchar(alphabet[nbr], count);
+}
 ~~~
 ***
 ## **Mini Get_next_line**
