@@ -6,13 +6,11 @@
 /*   By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 14:12:30 by ebennace          #+#    #+#             */
-/*   Updated: 2022/07/14 18:19:10 by ebennace         ###   ########.fr       */
+/*   Updated: 2022/07/22 09:31:32 by ebennace         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
+
 
 char *get_next_line(int fd)
 {
@@ -23,24 +21,35 @@ char *get_next_line(int fd)
     {
         if (*cursor == '\n')
             break;
-        *cursor++;
+        cursor++;
     }
     if (cursor > start)
     {
         *cursor = 0;
         return (start);
     }
+    free(start);
     return (NULL);
     
 }
 
+// char *get_next_line(int fd) 
+// {
+//     char *s = malloc(10000), *c = s;
+//     while (read(fd, c, 1) > 0 && *c++ != '\n');
+//     return c > s ? (*c = 0, s) : (free(s), NULL);
+// }
+
 int main()
 {
     int fd = open("file", O_RDONLY);
+    char *a;
     int i = 0;
     while (i < 6)
     {
-        printf("Return : %s\n", get_next_line(fd));
+        a =  get_next_line(fd);
+        printf("Return : %s\n", a);
+        free(a);
         i++;
     }
     

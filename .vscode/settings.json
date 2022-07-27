@@ -4,6 +4,11 @@
         "stdio.h": "c",
         "*.tcc": "c",
         "vector": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "fcntl.h": "c",
+        "chrono": "c",
+        "random": "c",
+        "limits": "c",
+        "valarray": "c"
     }
 }
